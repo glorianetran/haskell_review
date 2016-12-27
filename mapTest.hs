@@ -7,13 +7,11 @@ mapper2 :: (a-> b -> c) -> [a] -> [b] -> [c]
 mapper2 _ _ _ = []
 mapper2 f (x:xs) (y:ys) = (f x y) : (mapper2 f xs ys)
 
---figure out how to put in list notation
 mapper3 f lst1 lst2 = [(f x y)| x <- lst1, y <-lst2] 
 
 allSame _ [] = True -- if empty list return true
 allSame f (x: []) = True -- if one element return true 
 allSame f (x: y: []) = (f x == f y) -- if the first two elements are equal check them 
---allSame f (x: y: ys) = if (f x == f y) then allSame f ys else False 
 allSame f (x:y:ys) = if (f x == f y) then allSame f (y:ys) else False
 
 listCopy[] = []
